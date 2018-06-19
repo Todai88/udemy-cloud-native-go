@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"net/http"
 	"os"
-	"udemy-cloud-native-go-api/api"
+
+	"github.com/todai88/udemy-cloud-native-go-api/api"
 )
 
 func main() {
