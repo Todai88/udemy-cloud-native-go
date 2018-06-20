@@ -1,15 +1,10 @@
-FROM golang:1.9-alpine
+FROM alpine:3.5
 LABEL AUTHOR="J.-Bajoul Kakaei"
 
-ENV SOURCES /go/src/github.com/todai88/udemy-cloud-native-go-api/
-ENV PORT 5000
+ENV PORT 5050
 
-COPY . ${SOURCES}
-
-RUN cd ${SOURCES} && CGO_ENABLED=0 go install -a
-RUN ls ${SOURCES}
-RUN chmod +x -R ${SOURCES}
+COPY ./Udemy_Cloud_Native_Go /app/Udemy_Cloud_Native_Go
+RUN chmod +x /app/Udemy_Cloud_Native_Go
 
 EXPOSE ${PORT}
-
-ENTRYPOINT udemy-cloud-native-go-api
+ENTRYPOINT /app/Udemy_Cloud_Native_Go
