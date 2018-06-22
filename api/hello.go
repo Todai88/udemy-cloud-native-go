@@ -13,7 +13,7 @@ type Hello struct {
 // HelloHandleFunc to be used as http.HandleFunc for Hello API
 func HelloHandleFunc(w http.ResponseWriter, r *http.Request) {
 
-	m := Hello{"Welcome to Cloud Native Go."}
+	m := Hello{"Welcome to Cloud Native Go v2."}
 	b, err := json.Marshal(m)
 
 	if err != nil {
