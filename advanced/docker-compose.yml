@@ -7,4 +7,4 @@ services:
     environment:
     - PORT=8080
     ports:
-    - "8080:8080"
+    - "4001:8080"
