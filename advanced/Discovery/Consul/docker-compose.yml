@@ -1,6 +1,5 @@
 version: "2"
 
-
 services:
   consul:
     image: consul:latest
@@ -17,9 +16,9 @@ services:
   gin-web-01:
     image: gin-web:1.0.0
     environment:
-      - PORT=8080
+      - PORT=1010
     ports:
-      - "8080:8080"
+      - "1010:1010"
     networks:
       - sky-net
 
@@ -35,6 +34,3 @@ services:
 networks:
   sky-net:
     driver: bridge
-
-
-    
