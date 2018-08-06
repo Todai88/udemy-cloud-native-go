@@ -15,6 +15,12 @@ How is CONSUL better than other software that solves the same thing?
 ## Cheat sheet:
 
 ### Good commands to know:
+`consul` is the package you will use if you wish to interact with a running consul instance. 
+
+#### Add a key-value pair:
+```
+consul kv put <key> <value>
+```
 
 ### Good API endpoints: (** = IP and Port)
 
@@ -63,3 +69,37 @@ Query Parameters:
 * ?critical => returns all services with that name that is in a critical state.
 
 ----
+
+##### Get Key/Value pairs:
+Returns any key-value pairs in a running Consul instance:
+
+GET: `**/v1/kv/<optional segments>`
+
+Example: `**/v1/kv/gin-web/message/`
+
+Query Parameters: 
+
+* ?keys => returns all keys in the instance.
+* ?raw => returns the value in `raw` form.
+----
+
+##### Add Key/Value pair:
+Returns `true` if the API call is correct:
+
+PUT: `**/v1/kv/<path>`
+
+<path> => any legal RESTful endpoint where segments are separated by `/`. 
+
+Example: `**/vi/kv/gin-web/message`.
+
+The value would be taken from the body.
+
+----
+
+##### Delete Key/Value pair:
+Deletes a Key/Value pair if it exists.
+
+DELETE: `**/v1/kv/<path-to-value>`
+
+----
+
