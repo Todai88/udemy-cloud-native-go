@@ -10,6 +10,7 @@ services:
       - "8500:8500"
     networks:
       - sky-net
+      
   ## Define simple-server
   simple-server:
     build:
@@ -22,6 +23,21 @@ services:
       - consul
     networks:
       - sky-net
+
+  ## Define simple-client
+  simple-client:
+    build:
+      context: .
+      dockerfile: client/dockerfile
+    image: simple-client:1.0.0
+    environment:
+      - CONSUL_HTTP_ADDR=consul:8500
+    depends_on: ## starts after dependants have been started.
+      - consul
+      - simple-server
+    networks:
+      - sky-net
+
 
 networks:
   sky-net:
