@@ -7,7 +7,6 @@ RUN go get github.com/hashicorp/consul/api
 ENV SOURCES /go/src/github.com/lreimer/advanced-cloud-native-go/Discovery/Simple/
 COPY . ${SOURCES}
 
-RUN ls ${SOURCES}
 RUN cd ${SOURCES}client/ && CGO_ENABLED=0 go build
 
 ENV CONSUL_HTTP_ADDR localhost:8500
