@@ -14,6 +14,16 @@ How is Kubernetes better than other software that solves the same thing?
 
 ## Issues / Problems:
 
+### Can't find image
+Remember that Kubernetes has it's own version of Docker running on it, and if you use need to use a local image in your kubernetes cluster you need to build it in a Kubernetes shell too. This can be done like this:
+
+**Windows:**
+`minikube docker-env` and
+`minikube docker-env | Invoke-Expression` to get access to the shell
+`docker build .` or `docker-compose up` or whatever rocks your boat.
+
+**Linux:**
+
 ### Environment:
 There were issues where `minikube-net` wasn't working as intended between my two environments (Ubuntu and Windows 10). 
 
