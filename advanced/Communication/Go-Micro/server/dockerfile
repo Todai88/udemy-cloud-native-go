@@ -1,13 +1,21 @@
-FROM golang:1.8.1-alpine
+FROM golang:1.9-alpine3.7
 
 RUN apk update && apk upgrade && apk add --no-cache bash git
 
 RUN go get -u github.com/micro/micro && \
     go get github.com/micro/protobuf/proto && \
-    go get -u github.com/micro/protobuf/protoc-gen-go
+    go get -u github.com/micro/protobuf/protoc-gen-go && \
+    go get github.com/micro/go-plugins/wrapper/breaker/hystrix && \
+    go get github.com/afex/hystrix-go/hystrix
 
-ENV SOURCES /go/src/github.com/todai88/cloud-native-go/Communication/Go-Micro/
-COPY . ${SOURCES}
+ENV SOURCES /go/src/github.com/Todai88/udemy-cloud-native-go/advanced/Communication/Go-Micro/ 
+COPY . ${SOURCES} 
+
+RUN cd ${SOURCES} && ls
+
+RUN echo $PWD
+
+# RUN ls $GOPATH/src/github.com/todai88/udemy-cloud-native-go/advanced/Communication/Go-Micro/ 
 
 RUN cd ${SOURCES}server/ && CGO_ENABLED=0 go build
 
